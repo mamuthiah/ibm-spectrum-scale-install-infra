@@ -82,6 +82,11 @@
         - scale_storage_stanzafile_new is changed
 
     - debug:
+        msg: "{{ scale_nsd_create.stderr }}"
+      when: scale_nsd_create.rc != 0
+      ignore_errors: yes
+
+    - debug:
         msg: "{{ scale_nsd_create.cmd }}"
       when: scale_nsd_create.cmd is defined
       ignore_errors: yes
